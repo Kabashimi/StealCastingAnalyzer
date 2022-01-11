@@ -10,8 +10,9 @@ namespace da_service.Utils
         public float StartTemp { get; set; }
         public float TempDiff { get; set; }
         public TimeSpan TimeDiff { get; set; }
+        public double TimeDiffSeconds { get; set; }
 
-        public HeatTempDiff(int heatId, int gradeId, DateTime heatStartTime, float startTemp, float tempDiff, TimeSpan timeDiff)
+        public HeatTempDiff(int heatId, int gradeId, DateTime heatStartTime, float startTemp, float tempDiff, TimeSpan timeDiff, double timeDiffSeconds)
         {
             HeatId = heatId;
             GradeId = gradeId;
@@ -19,6 +20,7 @@ namespace da_service.Utils
             StartTemp = startTemp;
             TempDiff = tempDiff;
             TimeDiff = timeDiff;
+            TimeDiffSeconds = timeDiffSeconds;
         }
 
         public HeatTempDiff(int heatId)
@@ -29,6 +31,7 @@ namespace da_service.Utils
             StartTemp = 0;
             TempDiff = 0;
             TimeDiff = new TimeSpan();
+            TimeDiffSeconds = 0;
         }
     }
 }

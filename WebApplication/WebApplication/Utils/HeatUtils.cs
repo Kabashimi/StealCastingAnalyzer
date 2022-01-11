@@ -61,7 +61,8 @@ namespace da_service.Utils
                         temps[0].MeasureTime,
                         temps[0].Value,
                         tempDiff,
-                        timeDiff
+                        timeDiff,
+                        timeDiff.TotalSeconds
                     );
                     return heatDiff;
                 }
