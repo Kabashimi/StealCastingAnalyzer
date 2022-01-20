@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using da_service.Repositories;
 
 #nullable disable
 
 namespace da_service.Entities
 {
-    public partial class SEafdata
+    public partial class SEafdata : IEntity
     {
         public SEafdata()
         {

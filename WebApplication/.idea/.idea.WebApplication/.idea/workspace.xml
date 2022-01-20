@@ -5,9 +5,7 @@
     <projectFile profileName="WebApplication">WebApplication/WebApplication.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2833a3d5-abb9-4415-9a54-baa5cf965268" name="Changes" comment="basic data retrieving functionality">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2833a3d5-abb9-4415-9a54-baa5cf965268" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +13,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/kabas/source/repos/StealCastingAnalyzer/WebApplication/WebApplication/Utils/HeatTempDiff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kabas/source/repos/StealCastingAnalyzer/WebApplication/WebApplication/Utils/HeatUtils.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="23VN4g7ubu73fP3EpJQiXpY9dri" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -69,6 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1641815104652</updated>
       <workItem from="1641815119774" duration="2073000" />
+      <workItem from="1641909386934" duration="122000" />
     </task>
     <task id="LOCAL-00001" summary="Empty project created">
       <created>1641815283572</created>
@@ -84,14 +87,21 @@
       <option name="project" value="LOCAL" />
       <updated>1641816397158</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added timespan in plain seconds">
+      <created>1641909498365</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641909498365</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -103,11 +113,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Empty project created" />
     <MESSAGE value="basic data retrieving functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic data retrieving functionality" />
+    <MESSAGE value="added timespan in plain seconds" />
+    <option name="LAST_COMMIT_MESSAGE" value="added timespan in plain seconds" />
   </component>
 </project>

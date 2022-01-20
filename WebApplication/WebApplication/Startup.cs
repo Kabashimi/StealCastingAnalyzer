@@ -44,6 +44,9 @@ namespace da_service
             services.AddScoped<CSTDataRepository>();
             services.AddScoped<CSTTempRepository>();
             services.AddScoped<GradeRepository>();
+            services.AddScoped<LadleRepository>();
+            services.AddScoped<EAFDataRepository>();
+            
             services.AddScoped<HeatUtils>();
             services.AddScoped<FormatUtils>();
         }

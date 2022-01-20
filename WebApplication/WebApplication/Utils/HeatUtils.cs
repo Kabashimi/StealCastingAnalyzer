@@ -16,6 +16,7 @@ namespace da_service.Utils
         private readonly CSTDataRepository _cstDataRepository;
         private readonly CSTTempRepository _cstTempRepository;
         private readonly GradeRepository _gradeRepository;
+        private readonly EAFDataRepository _eafDataRepository;
 
         private readonly ILogger<HeatUtils> _logger;
         private readonly IServiceProvider _serviceProvider;
@@ -29,6 +30,7 @@ namespace da_service.Utils
             _cstDataRepository = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<CSTDataRepository>();
             _cstTempRepository = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<CSTTempRepository>();
             _gradeRepository = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<GradeRepository>();
+            _eafDataRepository = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<EAFDataRepository>();
         }
 
         public async Task<SHeat> getHeatById(int id)
@@ -43,26 +45,33 @@ namespace da_service.Utils
             return entity;
         }
         
-        public async Task<HeatTempDiff> getTempDiff(int heatId)
+        public async Task<HeatTempDiff> getTempDiff(int heatId, string gradeName = "nil")
         {
             var data = await _cstDataRepository.GetCSTDataByHeatId(heatId);
             if(data != null)
             {
                 var heat = await _heatRepository.GetHeatById(heatId);
                 var temps = await _cstTempRepository.getCSTTempListByCSTDataId(data.CstdataId);
+                var eafData = await _eafDataRepository.getByHeatId(heatId);
+                int heatsInLadle = eafData == null ? -1 : eafData.HeatsinLadle;
                 if(temps != null && temps.Count >1)
                 {
                     var tempDiff = temps[0].Value - temps[1].Value;
-                    var tmp = temps[0].MeasureTime.Ticks - temps[1].MeasureTime.Ticks;
+                    var tmp = temps[1].MeasureTime.Ticks - temps[0].MeasureTime.Ticks;
                     var timeDiff = new TimeSpan(tmp);
                     var heatDiff = new HeatTempDiff(
                         heatId,
+                        heat.HeatNumber,
                         heat.GradeId.Value,
+                        gradeName,
                         temps[0].MeasureTime,
                         temps[0].Value,
                         tempDiff,
                         timeDiff,
-                        timeDiff.TotalSeconds
+                        timeDiff.TotalSeconds,
+                        heat.Weight,
+                        data.LadleNumber,
+                        heatsInLadle
                     );
                     return heatDiff;
                 }
@@ -70,13 +79,13 @@ namespace da_service.Utils
             return null;
         }
         
-        public async Task<List<HeatTempDiff>> getTempDiffByGradeId(int gradeId)
+        public async Task<List<HeatTempDiff>> getTempDiffByGradeId(int gradeId, string gradeName = "nil")
         {
             var heatsList = await _heatRepository.getByGradeId(gradeId);
             List<HeatTempDiff> result = new List<HeatTempDiff>();
             foreach (var heat in heatsList)
             {
-                var obj = await getTempDiff(heat.HeatId);
+                var obj = await getTempDiff(heat.HeatId, gradeName);
                 if (obj != null)
                 {
                     result.Add(obj);    
@@ -91,7 +100,7 @@ namespace da_service.Utils
             GradeContainer result = new GradeContainer(gradeId, gradeName);
             foreach (var heat in heatsList)
             {
-                var obj = await getTempDiff(heat.HeatId);
+                var obj = await getTempDiff(heat.HeatId, gradeName);
                 if (obj != null)
                 {
                     result.Heats.Add(obj);    
